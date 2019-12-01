@@ -10,7 +10,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . "/system/request.php";
 
 if($_SERVER['REQUEST_URI'] == '/'){
     require_once $_SERVER['DOCUMENT_ROOT'] . "/controllers/home.php";
-} elseif(!empty($filename) && file_exist($filename)){
+} elseif(!empty($filename) && file_exists($filename)){
     require_once $filename;
 } else{
     require_once $_SERVER['DOCUMENT_ROOT'] . "/controllers/404.php";
@@ -19,3 +19,5 @@ if($_SERVER['REQUEST_URI'] == '/'){
 
 
 ?>
+
+<!-- site.in.ua/index.php?route=catalog -->
