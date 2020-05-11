@@ -1,4 +1,7 @@
 <?php 
+// if(!empty($_POST)){
+
+// }
 if(!empty($_GET['category_id'])){
     $category_id = $_GET['category_id'];
     $category_info = sql_select("SELECT * FROM news WHERE category_id='". (int)$category_id ."'", 'row');

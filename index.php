@@ -5,7 +5,7 @@ if(!empty($_GET['route'])){
 }
 require_once $_SERVER['DOCUMENT_ROOT'] . "/config.php";
 $connect = mysqli_connect(HOST, USER, PASSWORD, DATABASE);
-mysqli_query($connect, "SER CHARSET UTF8");
+mysqli_query($connect, "SET CHARSET UTF8");
 require_once $_SERVER['DOCUMENT_ROOT'] . "/system/request.php";
 
 if($_SERVER['REQUEST_URI'] == '/'){
@@ -20,4 +20,4 @@ if($_SERVER['REQUEST_URI'] == '/'){
 
 ?>
 
-<!-- site.in.ua/index.php?route=catalog -->
+<!-- site.in.ua/index.php?route=category -->

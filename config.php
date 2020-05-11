@@ -2,7 +2,7 @@
 // db connect
 define('HOST', 'localhost');
 define('USER', 'root');
-define('PASSWORD', 'root');
+define('PASSWORD', '');
 define('DATABASE', 'cinema');
 
 ?>
