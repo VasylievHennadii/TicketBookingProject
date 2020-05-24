@@ -1,5 +1,5 @@
 <?php 
-require_once $_SERVER['DOCUMENT_ROOT'] . "/system/request.php";
+// require_once $_SERVER['DOCUMENT_ROOT'] . "/system/request.php";
 getView('category');
 // if(!empty($_POST)){
 

@@ -1444,9 +1444,14 @@
                </div>
            </div>
            <div class="container">
-                <button style="margin-top: 50px; background-color: aquamarine;">
+                <form action="index.php" method="get">                
+                    <button name="route" value="author" style="margin-top: 50px; background-color: aquamarine;">
+                    Оформить бронь
+                    </button>    
+                </form>
+                <!-- <button style="margin-top: 50px; background-color: aquamarine;">
                     <a href="author.php">Оформить бронь</a>
-                </button> 
+                </button>  -->
            </div>            
     </section>
 

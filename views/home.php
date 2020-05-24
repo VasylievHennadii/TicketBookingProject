@@ -8,18 +8,25 @@
             <h1>HAUSER, MY TOUR 2020</h1>
             <div style="max-width: 250px">
                 <div style="margin-top: 50px">
-                <b>
-                    <strong>1690</strong>
-                    <strong> - </strong>
-                    <strong>9990</strong>
-                    <strong>грн</strong>
-                    " (50+ шт) "
-                </b>
+                    <b>
+                        <strong>1690</strong>
+                        <strong> - </strong>
+                        <strong>9990</strong>
+                        <strong>грн</strong>
+                         (50+ шт) 
+                    </b>
                 </div>
-                <div style="margin-top: 50px">Можно купить не больше 5 билетов в одни руки</div>
-                <button style="margin-top: 50px; background-color: aquamarine;">
+                <div style="margin-top: 50px">
+                    <span>Можно купить <strong>не больше 5</strong> билетов в одни руки</span> 
+                </div>
+                <form action="index.php" method="get">                
+                    <button name="route" value="order" style="margin-top: 50px; background-color: aquamarine;">
+                            Купить
+                    </button>    
+                </form>
+                <!-- <button style="margin-top: 50px; background-color: aquamarine;">
                     <a href="controllers/order.php">Купить</a>
-                </button>   
+                </button>    -->
                 
             </div>
         </div>

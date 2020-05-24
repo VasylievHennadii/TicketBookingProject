@@ -61,7 +61,7 @@
         </p>        
     </form> -->
 
-
+<div class="container" style="padding-top: 40px">
     <h2>Авторизация</h2>
     <a href='#'>Бронирование  доступно только зарегистрированным пользователям</a>
     <br><br>
@@ -85,12 +85,12 @@
     if (empty($_SESSION['login']) or empty($_SESSION['id'])){ 
         // echo '<a href="reg.php">Зарегистрироваться</a>' ;
         echo'<br><br>' ; 
-    echo "Вы вошли на сайт, как гость<br><br> ";
-    echo'<form action="reg.php" method="post">
-    <p>
-        <input type="submit" name="reg" value="Продолжить регистрацию" style="background-color: aquamarine">        
-    </p>    
-    </form>';
+    echo "Вы вошли на сайт, как гость";
+    echo'<form action="index.php" method="get">
+            <button name="route" value="reg" style="margin-top: 5px; background-color: aquamarine;">
+                Продолжить регистрацию
+            </button>   
+        </form>';
     }
     else{    
     echo "Вы вошли на сайт, как ".$_SESSION['login']."<br><br>
@@ -123,7 +123,7 @@
         }        
     }
     ?>
-    <br><br>
+    <br>
     <form action="/" method="post">
     <p>
         <input type="submit" name="exit" value="Exit" style="background-color: red">        
@@ -134,7 +134,10 @@
         unset ($_SESSION['id']);
     }
     ?>
-    </form>
+    </form>   
+
+</div>
+    
 
 
 
