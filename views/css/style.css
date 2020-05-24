@@ -1,0 +1,128 @@
+/* common styles start */
+*{
+    font-family: Arial, Helvetica, sans-serif;
+    box-sizing: border-box;
+}
+/* common styles end */
+
+
+
+
+/* style for header start */
+.navbar-brand,
+.nav-item,
+.navbar-text {
+    color: black !important;
+}
+
+header .bg-light {
+    background-color: #ffee5a !important;
+}
+
+.navbar-text .order {
+    font-size: 12px;
+    max-width: 180px;
+}
+
+.navbar-text .order .order-number {
+    font-weight: bold;
+    margin-right: 8px;
+}
+
+.navbar-text .fa-shopping-cart {
+    margin: 0 10px;
+}
+/* style for header end */
+
+
+
+/* style for .section-place start */
+.section-place {
+    padding: 80px 0;
+}
+
+.wrapper-choice {
+    float: left;
+    position: relative;
+}
+
+.wrapper-choice label {
+    padding: 10px;
+    background: rgb(184, 184, 184);
+    margin: 7px;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+/* обводка вокруг кнопки */
+.wrapper-choice:hover {
+    background: #ffee5a;
+    border-radius: 50%;
+}
+
+input[type="checkbox"]:checked + label {
+    background: rgb(28, 216, 21);
+    color: rgba(24, 23, 23, 0.76);
+}
+
+
+/* всплывающие подсказки начало*/
+
+/* сама подсказка */
+.hint {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 14px;
+    background: #ffee5a;
+    position: absolute;
+    width: 310px;
+    padding: 10px 0;
+    /* z-index: 5; */
+    box-shadow: 0px 0px 3px 5px rgba(0,0,0,0.37);
+    top: -110px;
+    left: -125px;
+    /* opacity: 0; */
+    transition: .75s ease-in-out;
+    visibility: hidden;
+}
+
+/* труегольник снизу под подсказкой */
+.hint-head::after {
+    content: '';
+    border: 10px solid transparent;
+    border-top: 23px solid #ffee5a;
+    bottom: -85px;
+    position: absolute;
+    left: 44px;
+}
+
+/* При наведение появляеться подсказка */
+.wrapper-choice:hover > .hint {
+    /* opacity: 1; */
+    top: -94px;
+    visibility: visible;
+}
+
+
+/* заголовок подсказки- относительно его спозиционарован треугольник */
+.hint-head {
+    font-weight: 600;
+    position: relative;
+}
+/* всплывающие подсказки конец*/
+
+
+/* style for .section-place end */
+
+
+
+
