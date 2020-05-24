@@ -1445,7 +1445,7 @@
            </div>
            <div class="container">
                 <button style="margin-top: 50px; background-color: aquamarine;">
-                    <a href="controllers/order.php">Оформить бронь</a>
+                    <a href="author.php">Оформить бронь</a>
                 </button> 
            </div>            
     </section>

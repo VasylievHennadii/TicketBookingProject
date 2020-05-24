@@ -1,7 +1,7 @@
 <?php 
 session_start();
 if(!empty($_GET['route'])){
-    $filename = $_SERVER['DOCUMENT_ROOT'] . "/controllers/". $_GET['route'] . ".php";
+    $filename = $_SERVER['DOCUMENT_ROOT'] . "/controllers/" . $_GET['route'] . ".php";
 }
 require_once $_SERVER['DOCUMENT_ROOT'] . "/config.php";
 $connect = mysqli_connect(HOST, USER, PASSWORD, DATABASE);
