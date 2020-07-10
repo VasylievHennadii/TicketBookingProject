@@ -19,6 +19,10 @@ header .bg-light {
     background-color: #ffee5a !important;
 }
 
+footer .bg-light {
+    background-color: #ffee5a !important;
+}
+
 .navbar-text .order {
     font-size: 12px;
     max-width: 180px;
