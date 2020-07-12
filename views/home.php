@@ -1,6 +1,6 @@
 <?php getHeader($data);?>
 
-    <div class="container" style="display: flex">
+    <div class="container" style="display: flex; padding-bottom: 20px">
         <div style="padding-top: 40px">
             <img src="/image/hauser.jpeg" style="max-width: 100%; height: auto;" alt="user image">
         </div>
@@ -19,7 +19,7 @@
                 <div style="margin-top: 50px">
                     <span>Можно купить <strong>не больше 5</strong> билетов в одни руки</span> 
                 </div>
-                <form action="index.php" method="get">                
+                <form action="/" method="get">                
                     <button name="route" value="order" style="margin-top: 50px; background-color: aquamarine;">
                             Купить
                     </button>    

@@ -1444,7 +1444,7 @@
                </div>
            </div>
            <div class="container">
-                <form action="index.php" method="get">                
+                <form action="/" method="get">                
                     <button name="route" value="author" style="margin-top: 50px; background-color: aquamarine;">
                     Оформить бронь
                     </button>    

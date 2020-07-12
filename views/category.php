@@ -8,4 +8,4 @@
 <input type="text" name="name">
 <input type="submit" value="send">
 </form>
-<?php getFooter(); ?>
+<?php getFooter($data); ?>

@@ -11,12 +11,12 @@
     <script src="/views/js/jQuery-3.3.1.js"></script>
     <script src="/views/js/bootstrap.min.js"></script>
      <script src="./js/popper.min.js"></script> 
-    <title>Hall</title>
+    <title>TESTSITE</title>
 </head>
 <body>
     <header>
         <nav class="navbar navbar-expand-md navbar-light bg-light">
-            <a class="navbar-brand" href="/">CARABAS.COM</a>
+            <a class="navbar-brand" href="/">TESTSITE.COM</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -42,9 +42,15 @@
                     </li> 
                 </ul>
                 <div class="navbar-text d-flex justyfi-content-center align-items-center">
-                    <div class="order">На оформлення замовлення
+                    <div class="order">
+                        <?php if(empty($_SESSION['login'])): ?>
+                            <span class="order-number">Вы вошли на сайт, как гость</span>
+                        <?php else:?>
+                            <span class="order-number">Вы вошли на сайт, как <?=$_SESSION['login'];?></span>
+                        <!-- На оформлення замовлення
                         <span class="order-number">№ 1602061177</span>
-                        залишилось
+                        залишилось -->
+                        <?php endif;?>
                     </div>
                     <a href="#">
                         <i class="fas fa-shopping-cart"></i>

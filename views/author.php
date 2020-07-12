@@ -1,4 +1,7 @@
 <?php getHeader($data);?>
+
+
+
 <!-- <div class="content">
 <?php foreach($data['news'] as $news){  ?>
 <a href="<?php echo mylink('register'); ?>">Регистрация</a>
@@ -61,81 +64,87 @@
         </p>        
     </form> -->
 
-<div class="container" style="padding-top: 40px">
-    <h2>Авторизация</h2>
-    <a href='#'>Бронирование  доступно только зарегистрированным пользователям</a>
-    <br><br>
-    <form action="testreg.php" method="post">    
-        <p>
-            <label>Ваш логин:<br></label>
-            <input name="login" type="text" size="15" maxlength="15">
-        </p>                    
-        <p>
-            <label>Ваш пароль:<br></label>
-            <input name="password" type="password" size="15" >
-        </p>             
-        <p>
-            <input type="submit" name="submit" value="Войти" style="background-color: aquamarine">            
-        </p>
-    </form>
-    <!-- <br> -->
 
+
+<div class="container" style="padding-top: 40px; display: flex">
+    
+    <div>
+    <h2>Авторизация</h2>    
     <?php
-    // Проверяем, пусты ли переменные логина и id пользователя
-    if (empty($_SESSION['login']) or empty($_SESSION['id'])){ 
-        // echo '<a href="reg.php">Зарегистрироваться</a>' ;
-        echo'<br><br>' ; 
-    echo "Вы вошли на сайт, как гость";
-    echo'<form action="index.php" method="get">
+    // $_SESSION['login'] = 'admin';
+    // $_SESSION['id'] = 1;
+    // Проверяем, пусты ли переменные логина и id пользователя    
+    if (empty($_SESSION['login']) or empty($_SESSION['id'])):?> 
+        <a href='<?= mylink('reg'); ?>'>Бронирование  доступно только зарегистрированным пользователям</a>
+        <br><br>
+        <form action="testreg.php" method="post">    
+            <p>
+                <label>Ваш логин : <br></label>
+                <input name="login" type="text" class="form-control" id="login" placeholder="Login">
+            </p>                    
+            <p>
+                <label>Ваш пароль:<br></label>
+                <input name="password" type="password" size="15" class="form-control" id="login" placeholder="Login">
+            </p>             
+            <p>
+                <input type="submit" name="submit" value="Войти" style="background-color: aquamarine">            
+            </p>
+        </form>        
+        <br>
+        Вы вошли на сайт, как гость<br>
+        <a href='<?= mylink('reg'); ?>'><<< Зарегистрироваться >>></a><br><br>
+        <!-- <form action="/" method="get">
             <button name="route" value="reg" style="margin-top: 5px; background-color: aquamarine;">
-                Продолжить регистрацию
+                Зарегистрироваться
             </button>   
-        </form>';
-    }
-    else{    
-    echo "Вы вошли на сайт, как ".$_SESSION['login']."<br><br>
-    <a  href='blog.php'>Продолжить бронирование</a>";    
-    }
-    if(!empty($_SESSION['login']) && !empty($_SESSION['id'])){
-        unset($_SESSION['valid_login']);
-        unset($_SESSION['valid_email']);
-        unset($_SESSION['valid_password']);  
-        unset($_SESSION['valid_tel']);
-        unset($_SESSION['error_login']);
-        unset($_SESSION['error_email']);
-        unset($_SESSION['error_tel']); 
-        unset($_SESSION['error_password']);
-        unset($_SESSION['error_passwordDubl']);
-        if($_SESSION['login']=='admin'){
-            echo '
+        </form> -->
+    <?php else:?>    
+        Вы вошли на сайт, как <?=$_SESSION['login'];?><br><br>
+        <?php if($_SESSION['login']!='admin'): ?> 
+            <a  href='<?= mylink('order'); ?>'>Продолжить бронирование</a><br><br>  
+        <?php endif;?>
+    <?php endif;?>
+
+    <?php if(!empty($_SESSION['login']) && !empty($_SESSION['id'])):?>
+        <?php unset($_SESSION['valid_login']);?>
+        <?php unset($_SESSION['valid_email']);?>
+        <?php unset($_SESSION['valid_password']);?>  
+        <?php unset($_SESSION['valid_tel']);?>
+        <?php unset($_SESSION['error_login']);?>
+        <?php unset($_SESSION['error_email']);?>
+        <?php unset($_SESSION['error_tel']); ?>
+        <?php unset($_SESSION['error_password']);?>
+        <?php unset($_SESSION['error_passwordDubl']);?>
+
+        <?php if($_SESSION['login']=='admin'):?>            
             <form action="admin.php" method="post">
             <p>
                 <input type="submit" name="exit" value="Войти в кабинет admin" style=" background: green;">        
             </p>    
-            </form> ';
-        } else{
-            echo '
+            </form> 
+        <?php else:?>            
             <form action="user_account.php" method="post">
             <p>
                 <input type="submit" name="exit" value="Войти в кабинет" style=" background: green;">        
             </p>    
-            </form> ';
-        }        
-    }
-    ?>
+            </form> 
+        <?php endif;?>        
+    <?php endif;?>
     <br>
-    <form action="/" method="post">
+    <form action="<?= mylink('home'); ?>" method="post">
     <p>
-        <input type="submit" name="exit" value="Exit" style="background-color: red">        
-    </p>
-    <?php
-    if (!empty($_POST['exit'])){
-        unset ($_SESSION['login']);
-        unset ($_SESSION['id']);
-    }
-    ?>
+        <input type="submit" name="exit" value="ВЫХОД" style="background-color: red">        
+    </p>    
     </form>   
-
+    </div>
+    <div class="container col-md-6 " style="padding-top: 10px; padding-left: 100px">
+        <img src="/image/hauser.jpeg" style="max-width: 60%; height: auto;" alt="user image"><br><br><br>
+        <div>
+        <?php if (empty($_SESSION['login']) or empty($_SESSION['id'])):?>
+            <a href='<?= mylink('order'); ?>'><<< Продолжить бронирование без регистрации >>></a>
+        <?php endif;?>
+        </div>
+    </div>
 </div>
     
 
