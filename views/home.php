@@ -2,7 +2,7 @@
 
     <div class="container" style="display: flex; padding-bottom: 20px">
         <div style="padding-top: 40px">
-            <img src="/image/hauser.jpeg" style="max-width: 100%; height: auto;" alt="user image">
+            <a href="<?= mylink('order'); ?>"><img src="/image/hauser.jpeg" style="max-width: 100%; height: auto;" alt="user image"></a>
         </div>
         <div class="container" style="padding: 40px">
             <h1>HAUSER, MY TOUR 2020</h1>
