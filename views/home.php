@@ -20,7 +20,7 @@
                     <span>Можно купить <strong>не больше 5</strong> билетов в одни руки</span> 
                 </div>
                 <form action="/" method="get">                
-                    <button name="route" value="order" style="margin-top: 50px; background-color: aquamarine;">
+                    <button name="route" value="order" class="btn" style="margin-top: 50px; background-color: aquamarine;">
                             Купить
                     </button>    
                 </form>

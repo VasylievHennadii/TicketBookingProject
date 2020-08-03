@@ -49,7 +49,7 @@
                     <?php } ?>  
                 </p>
                 <p>
-                    <input type="submit" name="submit" value="Зарегистрироваться" style="background-color: aquamarine">    
+                    <input type="submit" name="submit" value="Зарегистрироваться" class="btn" style="background-color: aquamarine">    
                             
                 </p>
             </form>            
@@ -59,11 +59,10 @@
         <img src="/image/hauser.jpeg" style="max-width: 70%; height: auto;" alt="user image"><br><br>
         <div>
             <a href='<?= mylink('order'); ?>'><<< Продолжить бронирование без регистрации >>></a>
-        </div>
-        <br>
+        </div>        
         <form action="<?= mylink('home'); ?>" method="post">
             <p>
-                <input type="submit" name="exit" value="ВЫХОД" style="background-color: red">        
+                <input type="submit" name="exit" value="ВЫХОД" class="btn" style="background-color: red">        
             </p>    
         </form>  
     </div>

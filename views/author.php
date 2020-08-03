@@ -93,7 +93,7 @@
                 <input name="password" type="password" size="15" class="form-control" id="login" placeholder="Password">
             </p>             
             <p>
-                <input type="submit" name="submit" value="Войти" style="background-color: aquamarine">            
+                <input type="submit" name="submit" value="Войти" class="btn" style="background-color: aquamarine">            
             </p>
         </form>        
         <br>
@@ -120,13 +120,13 @@
         <?php if($_SESSION['login']=='admin'):?>            
             <form action="admin.php" method="post">
             <p>
-                <input type="submit" name="exit" value="Войти в кабинет admin" style=" background: green;">        
+                <input type="submit" name="exit" value="Войти в кабинет admin" class="btn" style=" background: green;">        
             </p>    
             </form> 
         <?php else:?>            
             <form action="user_account.php" method="post">
             <p>
-                <input type="submit" name="exit" value="Войти в кабинет" style=" background: green;">        
+                <input type="submit" name="exit" value="Войти в кабинет" class="btn" style=" background: green;">        
             </p>    
             </form> 
         <?php endif;?>        
@@ -134,7 +134,7 @@
     <br>
     <form action="<?= mylink('home'); ?>" method="post">
     <p>
-        <input type="submit" name="exit" value="ВЫХОД" style="background-color: red">        
+        <input type="submit" name="exit" value="ВЫХОД" class="btn" style="background-color: red">        
     </p>    
     </form>   
     </div>
