@@ -2,14 +2,14 @@
 
 <?php //debug($data);?>
 <?php 
-foreach($data['zal'] as $key => $value){
-    $zal = $value;
-   // debug($value);
-}
-foreach($data['category'] as $key => $value){
-    $category = $value;
-   // debug($category);
-}
+// foreach($data['zal'] as $key => $value){
+//     $zal = $value;
+//    debug($value);
+// }
+// foreach($data['category'] as $key => $value){
+//     $category = $value;
+//   debug($category);
+// }
 
 ?>
 
@@ -20,15 +20,20 @@ foreach($data['category'] as $key => $value){
                 <?php foreach($data['zal'] as $key => $zal) : ?>
                     <!-- кнопка -->
                     <div class="wrapper-choice">
-                        <input class="d-none" type="checkbox" id="<?=$zal['place_id'];?>">
-                        <label for="<?=$zal['place_id'];?>"><?=$zal['place_id'];?></label>
-                        <!-- всплывающая подсказка -->
-                        <div class="hint">
-                            <span class="hint-head">Додати в кошик</span>
-                            <span>VIP ПАРТЕР / VIP PARTER, ряд <?=$zal['place_name'];?>, місце: <?=$zal['place_id'];?></span>
-                            <span>Ціна 1490.00 грн</span>
-                        </div>
-                        <!-- /всплывающая подсказка -->
+                        <?php if($zal['status']) :?>
+                            <input class="d-none" type="checkbox" id="<?=$zal['place_id'];?>">
+                            <label for="<?=$zal['place_id'];?>"><?=$zal['place_id'];?></label>
+                                <!-- всплывающая подсказка -->
+                                <div class="hint">
+                                    <span class="hint-head">Додати в кошик</span>
+                                    <span><?=$zal['category_name'];?> , ряд <?=$zal['place_name'];?>, місце: <?=$zal['place_id'];?></span>
+                                    <span>Ціна <?=$zal['price'];?> грн</span>
+                                </div>
+                                <!-- /всплывающая подсказка -->
+                        <?php else :?>
+                            <input class="d-none" id="<?=$zal['place_id'];?>">
+                            <label style="background: rgb(223, 33, 8); color: rgba(24, 23, 23, 0.76);" for="<?=$zal['place_id'];?>"><?=$zal['place_id'];?></label>
+                        <?php endif;?>                  
                     </div>
                     <!-- /кнопка -->
                 <?php endforeach;?>

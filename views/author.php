@@ -1,69 +1,6 @@
 <?php getHeader($data);?>
 
-<?php debug($_SESSION); ?>
-
-
-<!-- <div class="content">
-<?php foreach($data['news'] as $news){  ?>
-<a href="<?php echo mylink('register'); ?>">Регистрация</a>
-<?php } ?>
-</div> -->
-<!-- <form method="post">
-<input type="text" name="name">
-<input type="submit" value="send">
-</form> -->
-
-
-<!-- <style>
-.error {color: #FF0000;}
-</style>
-<h2>Личный кабинет пользователя<?php echo" ".$_SESSION['login']."";?></h2>
-<h3>Внести изменения в регистрационные данные</h3>
-<form action="/save_user_account.php" method="post">        
-    <p>
-        <label>Ваш логин(изменить):<span class="error">* <br></span></label>            
-        <input type="text" name="login" value="<?php echo !empty($f['valid_login']) ? $f['valid_login'] : ''; ?>" /> <?php if(!empty($f['error_login'])) { ?>
-        <span class="error"> <?php echo $f['error_login']; ?>
-        </span> 
-        <?php } ?>  
-    </p>        
-    <p>
-        <label>Ваш пароль(изменить):<span class="error">* <br></span></label>            
-        <input type="password" name="password" value="<?php echo !empty($f['valid_password']) ? $f['valid_password'] : ''; ?>" /> <?php if(!empty($f['error_password'])) { ?>
-        <span class="error"> <?php echo $f['error_password']; ?>
-        </span> 
-        <?php } ?>             
-    </p>  
-    <p>
-        <label>Повтор пароля:<span class="error">* <br></span></label>            
-        <input type="password" name="passwordDubl" value="<?php echo !empty($f['valid_password']) ? $f['valid_password'] : ''; ?>" /> <?php if(!empty($f['error_passwordDubl'])) { ?>
-        <span class="error"> <?php echo $f['error_passwordDubl']; ?>
-        </span> 
-        <?php } ?>             
-    </p>
-    <p>
-        <label >E-mail(изменить): <span class="error">* <br></span></label>
-        <input type="text" name="email" value="<?php echo !empty($f['valid_email']) ? $f['valid_email'] : ''; ?>" /> <?php if(!empty($f['error_email'])) { ?>
-        <span class="error"> <?php echo $f['error_email']; ?>
-        </span> 
-        <?php } ?>  
-    </p>
-    <p>
-        <label >Tel(изменить):  <span class="error">* <br></span></label>
-        <input type="text" name="tel" value="<?php echo !empty($f['valid_tel']) ? $f['valid_tel'] : ''; ?>" /> <?php if(!empty($f['error_tel'])) { ?>
-        <span class="error"> <?php echo $f['error_tel']; ?>
-        </span> 
-        <?php } ?>  
-    </p>
-    <p>
-        <input style=" background: red;" type="submit" name="submit" value="Изменить">        
-    </p>
-    </form>
-    <form action="index.php" method="post">
-        <p>
-            <input type="submit" name="output" value="На главную" style=" background: green;">        
-        </p>        
-    </form> -->
+<?php //debug($_SESSION); ?>
 
 
 <style>
@@ -106,31 +43,7 @@
         <?php endif;?>
     <?php endif;?>
 
-    <?php if(!empty($_SESSION['login']) && !empty($_SESSION['id'])):?>
-        <?php unset($_SESSION['valid_login']);?>
-        <?php unset($_SESSION['valid_email']);?>
-        <?php unset($_SESSION['valid_password']);?>  
-        <?php unset($_SESSION['valid_tel']);?>
-        <?php unset($_SESSION['error_login']);?>
-        <?php unset($_SESSION['error_email']);?>
-        <?php unset($_SESSION['error_tel']); ?>
-        <?php unset($_SESSION['error_password']);?>
-        <?php unset($_SESSION['error_passwordDubl']);?>
-
-        <?php if($_SESSION['login']=='admin'):?>            
-            <form action="admin.php" method="post">
-            <p>
-                <input type="submit" name="exit" value="Войти в кабинет admin" class="btn" style=" background: green;">        
-            </p>    
-            </form> 
-        <?php else:?>            
-            <form action="user_account.php" method="post">
-            <p>
-                <input type="submit" name="exit" value="Войти в кабинет" class="btn" style=" background: green;">        
-            </p>    
-            </form> 
-        <?php endif;?>        
-    <?php endif;?>
+    
     <br>
     <form action="<?= mylink('home'); ?>" method="post">
     <p>

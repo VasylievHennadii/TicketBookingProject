@@ -1,8 +1,6 @@
 <?php
 
-// if(empty($_SESSION['login']) && empty($_SESSION['id'])){
-//     getView('reg');
-// }
+
 if(empty($_POST)){
   getView('reg');
 }else{
@@ -57,8 +55,7 @@ if(empty($_POST)){
   }
 
 
-  if (!empty($_SESSION['error_login']) || !empty($_SESSION['error_email']) || !empty($_SESSION['error_tel']) || !empty($_SESSION['error_password']) || !empty($_SESSION['error_passwordDubl'])){
-  //   header('Location: /reg.php');
+  if (!empty($_SESSION['error_login']) || !empty($_SESSION['error_email']) || !empty($_SESSION['error_tel']) || !empty($_SESSION['error_password']) || !empty($_SESSION['error_passwordDubl'])){  
       getView('reg');
     exit;
   }
@@ -79,18 +76,13 @@ if(empty($_POST)){
   $query_c = mysqli_query($connect, $sql_c);
   $myrow = mysqli_fetch_assoc($query_c);  
 
-  if (!empty($myrow['user_email'])) {   
-     // echo "Извините, введённый вами email уже зарегистрирован. Используйте другой email.<br><br>";     
-     // echo "<a href=".mylink('reg').">Вернуться для регистрации1</a>";
+  if (!empty($myrow['user_email'])) {
      $_SESSION['error_email'] = 'Извините, введённый вами email уже зарегистрирован. Используйте другой email.';
      unset($_SESSION['valid_email']);  
      getView('reg');
      exit;
   } else {
-     unset($_SESSION['error_email']);
-     // $_SESSION['login']=$myrow['user_name']; 
-     // $_SESSION['id']=$myrow['user_id'];
-     // $_SESSION['email']=$myrow['user_email'];
+     unset($_SESSION['error_email']);     
   }
 
   // если такого нет, то сохраняем данные

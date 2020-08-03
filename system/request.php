@@ -47,6 +47,7 @@ function author($data, $connect){
 	        $_SESSION['id']=$user['user_id'];
 	        $_SESSION['email']=$user['user_email'];
 	        $_SESSION['tel']=$user['user_tel']; 
+	        $_SESSION['role']=$user['role']; 
 	        return true;         
         }             
     }

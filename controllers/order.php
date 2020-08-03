@@ -1,14 +1,6 @@
 <?php
 
-$sql_c = "SELECT * FROM category";       
-$check_categories = mysqli_query($connect, $sql_c);        
-while($res[] = mysqli_fetch_assoc($check_categories)){
-    $categories = $res;
-}
-$data ['category']= $categories;
-
-
-$sql_z = "SELECT * FROM zal ";       
+$sql_z = "SELECT * FROM zal z LEFT JOIN category c ON (z.category_id=c.category_id)";       
 $check_zal = mysqli_query($connect, $sql_z);        
 while($ress[] = mysqli_fetch_assoc($check_zal)){
     $zal = $ress;
