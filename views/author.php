@@ -12,51 +12,42 @@
 <?php endif;?>
 <div class="container" style="padding-top: 40px; display: flex">    
     <div>
-    <h2>Авторизация</h2>    
-    <?php if (empty($_SESSION['login']) or empty($_SESSION['id'])):?> 
-        <a href='<?= mylink('reg'); ?>'>Бронирование  доступно только зарегистрированным пользователям</a>
-        <br><br>
-        <form action="<?= mylink('author'); ?>" method="post">    
-            <p>
-                <label>Ваше имя: <br></label>
-                <input name="login" type="text" class="form-control" id="login" placeholder="Имя">
-            </p>  
-            <p>
-                <label>Ваш E-mail: <br></label>
-                <input name="email" type="text" class="form-control" id="email" placeholder="E-mail">
-            </p>                    
-            <p>
-                <label>Ваш пароль:<br></label>
-                <input name="password" type="password" size="15" class="form-control" id="login" placeholder="Password">
-            </p>             
-            <p>
-                <input type="submit" name="submit" value="Войти" class="btn" style="background-color: aquamarine">            
-            </p>
-        </form>        
-        <br>
-        Вы вошли на сайт, как гость<br>
-        <a href='<?= mylink('reg'); ?>'><<< Зарегистрироваться >>></a><br>        
-    <?php else:?>    
-        Вы вошли на сайт, как <?=$_SESSION['login'];?><br><br>
-        <?php if($_SESSION['login']!='admin'): ?> 
-            <a  href='<?= mylink('order'); ?>'>Продолжить бронирование</a><br><br>  
+        <h2>Авторизация</h2>    
+        <?php if (empty($_SESSION['login']) or empty($_SESSION['id'])):?> 
+            <a href='<?= mylink('reg'); ?>'>Бронирование  доступно только зарегистрированным пользователям</a>
+            <br><br>
+            <form action="<?= mylink('author'); ?>" method="post">    
+                <p>
+                    <label>Ваше имя: <br></label>
+                    <input name="login" type="text" class="form-control" id="login" placeholder="Имя">
+                </p>  
+                <p>
+                    <label>Ваш E-mail: <br></label>
+                    <input name="email" type="text" class="form-control" id="email" placeholder="E-mail">
+                </p>                    
+                <p>
+                    <label>Ваш пароль:<br></label>
+                    <input name="password" type="password" size="15" class="form-control" id="login" placeholder="Password">
+                </p>             
+                <p>
+                    <input type="submit" name="submit" value="Войти" class="btn" style="background-color: aquamarine">            
+                </p>
+            </form> 
+        <?php else:?>    
+            Вы вошли на сайт, как <?=$_SESSION['login'];?><br><br>
+            <?php if($_SESSION['login']!='admin'): ?> 
+                <a  href='<?= mylink('order'); ?>'>Продолжить бронирование</a><br><br>  
+            <?php endif;?>
         <?php endif;?>
-    <?php endif;?>
-
-    
-    <br>
-    <form action="<?= mylink('home'); ?>" method="post">
-    <p>
-        <input type="submit" name="exit" value="ВЫХОД" class="btn" style="background-color: red">        
-    </p>    
-    </form>   
     </div>
     <div class="container col-md-6 " style="padding-top: 10px; padding-left: 100px">
-        <img src="/image/hauser.jpeg" style="max-width: 60%; height: auto;" alt="user image"><br><br><br>
-        <div>
-        <?php if (empty($_SESSION['login']) or empty($_SESSION['id'])):?>
-            <a href='<?= mylink('order'); ?>'><<< Продолжить бронирование без регистрации >>></a>
-        <?php endif;?>
+        <div class="container col-md-10 ">
+            <img src="/image/hauser.jpeg" style="max-width: 60%; height: auto;" alt="user image"><br><br><br>
+            <form action="<?= mylink('home'); ?>" method="post">
+                <p>
+                    <input type="submit" name="exit" value="ВЫХОД" class="btn" style="background-color: red">        
+                </p>    
+            </form> 
         </div>
     </div>
 </div>

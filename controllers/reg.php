@@ -1,5 +1,9 @@
 <?php
 
+if (!empty($_SESSION['login']) && !empty($_SESSION['id'])){
+  getView('author');
+  die;
+}
 
 if(empty($_POST)){
   getView('reg');
@@ -90,7 +94,7 @@ if(empty($_POST)){
   mysqli_query($connect, $result2); //добавление нового пoля логин и пароль в таблицу users
 
   if ($result2 == true){
-     echo "Вы успешно зарегистрированы! Теперь вы можете <a href='".mylink('order')."'>продолжить бронирование</a>";
+     //echo "Вы успешно зарегистрированы! Теперь вы можете <a href='".mylink('order')."'>продолжить бронирование</a>";
      $sql_c = "SELECT * FROM users WHERE user_email='$email'";
      $query_c = mysqli_query($connect, $sql_c);
      $myrow = mysqli_fetch_assoc($query_c);
@@ -105,8 +109,7 @@ if(empty($_POST)){
       echo "<a href=".mylink('reg').">Вернуться для регистрации2</a>";
   }
 
-  if(!empty($_SESSION['valid_login']) && !empty($_SESSION['valid_email']) && !empty($_SESSION['valid_tel']) && !empty($_SESSION['valid_password'])) {  
-    $_SESSION['auth'] =1;
+  if(!empty($_SESSION['valid_login']) && !empty($_SESSION['valid_email']) && !empty($_SESSION['valid_tel']) && !empty($_SESSION['valid_password'])) {    
     unset($_SESSION['valid_login']);
     unset($_SESSION['valid_email']);
     unset($_SESSION['valid_password']);  
@@ -120,6 +123,6 @@ if(empty($_POST)){
   }
 
 
-  getView('order');
+  getView('author');
 
 }

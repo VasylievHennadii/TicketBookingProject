@@ -57,9 +57,9 @@
     </div>
     <div class="container col-md-6 " style="padding-top: 10px; padding-left: 100px">
         <img src="/image/hauser.jpeg" style="max-width: 70%; height: auto;" alt="user image"><br><br>
-        <div>
+        <!-- <div>
             <a href='<?= mylink('order'); ?>'><<< Продолжить бронирование без регистрации >>></a>
-        </div>        
+        </div>         -->
         <form action="<?= mylink('home'); ?>" method="post">
             <p>
                 <input type="submit" name="exit" value="ВЫХОД" class="btn" style="background-color: red">        

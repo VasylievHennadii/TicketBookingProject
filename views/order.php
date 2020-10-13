@@ -20,9 +20,24 @@
                 <?php foreach($data['zal'] as $key => $zal) : ?>
                     <!-- кнопка -->
                     <div class="wrapper-choice">
-                        <?php if($zal['status']) :?>
+                        <?php if($zal['status']) :?>                            
                             <input class="d-none" type="checkbox" id="<?=$zal['place_id'];?>">
-                            <label for="<?=$zal['place_id'];?>"><?=$zal['place_id'];?></label>
+                            <label for="<?=$zal['place_id'];?>" style="color:
+                                    <?php switch ($zal['category_id']) {
+                                            case 1:
+                                                echo " yellow";
+                                                break;
+                                            case 2:
+                                                echo " dimgray";
+                                                break;
+                                            case 3:
+                                                echo " chocolate";
+                                                break;
+                                            default:
+                                                " black";
+                                        }                                
+                                    ?>"><?=$zal['place_id'];?>
+                            </label>
                                 <!-- всплывающая подсказка -->
                                 <div class="hint">
                                     <span class="hint-head">Додати в кошик</span>
@@ -32,7 +47,7 @@
                                 <!-- /всплывающая подсказка -->
                         <?php else :?>
                             <input class="d-none" id="<?=$zal['place_id'];?>">
-                            <label style="background: rgb(223, 33, 8); color: rgba(24, 23, 23, 0.76);" for="<?=$zal['place_id'];?>"><?=$zal['place_id'];?></label>
+                            <label style="color: rgba(249, 78, 78); background: rgba(249, 78, 78); cursor: default;" for="<?=$zal['place_id'];?>"><?=$zal['place_id'];?></label>
                         <?php endif;?>                  
                     </div>
                     <!-- /кнопка -->

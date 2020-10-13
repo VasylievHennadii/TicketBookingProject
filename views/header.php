@@ -4,9 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="shortcut icon" href="/image/star.png" type="image/png" >
     <link rel="stylesheet" href="/views/css/normalize.css">
     <link rel="stylesheet" href="/views/css/bootstrap.css">
     <link rel="stylesheet" href="/views/css/style.css">
+    <link rel="stylesheet" href="/views/style/style.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
     <script src="/views/js/jQuery-3.3.1.js"></script>
     <script src="/views/js/bootstrap.min.js"></script>

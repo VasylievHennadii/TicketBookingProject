@@ -7,4 +7,4 @@ while($ress[] = mysqli_fetch_assoc($check_zal)){
 }
 $data['zal'] = $zal;
 
-getView($_GET['route'], $data);
+getView('order', $data);
