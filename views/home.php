@@ -1,6 +1,6 @@
 <?php getHeader($data);?>
 
-<div class="container" style="display: flex; padding-bottom: 20px">
+<div class="container" style="display: flex; min-height: 100%;">
     <div style="padding-top: 40px">
         <a href="<?= mylink('order'); ?>"><img src="/image/hauser.jpeg" style="max-width: 100%; height: auto;" alt="user image"></a>
     </div>

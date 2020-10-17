@@ -47,7 +47,7 @@
                             </ul>
                         </div>
                         <div class="col-md-4 navbar-text" style="text-align: end;">
-                            <a href="#">
+                            <a href="<?=mylink('cart');?>">
                                 <i class="fas fa-shopping-cart"></i>
                             </a>
                         </div>        

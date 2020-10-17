@@ -1,6 +1,8 @@
 <?php 
 
-
+if (!empty($_POST['exit'])){
+    unset($_SESSION['zakaz_place']);    
+}
 
 if(!empty($_POST['check_list']) && empty($_SESSION['zakaz_place'])) { 
     $z = $_POST['check_list'];
@@ -16,16 +18,5 @@ if(!empty($_POST['check_list']) && empty($_SESSION['zakaz_place'])) {
     $_SESSION['zakaz_place'] = $z;
 }
 
-if (!empty($_POST['login']) && !empty($_POST['email']) && !empty($_POST['password'])){
-	$data = $_POST;
-    author($data, $connect); 
-    // if($_SESSION['role'] && $_SESSION['role'] === 'admin'){        
-    //     getView('admin');
-    // }else{        
-    //     getView('author');
-    // }
-    getView('author');
-}else{
-    getView('author');
-}
 
+getView('cart');

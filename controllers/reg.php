@@ -5,10 +5,15 @@ if (!empty($_SESSION['login']) && !empty($_SESSION['id'])){
   die;
 }
 
-if(empty($_POST)){
+if(empty($_POST['login']) && empty($_POST['email']) && empty($_POST['tel']) && empty($_POST['password']) && empty($_POST['passwordDubl'])){
+  unset($_SESSION['error_login']);
+  unset($_SESSION['error_email']);
+  unset($_SESSION['error_tel']); 
+  unset($_SESSION['error_password']);
+  unset($_SESSION['error_passwordDubl']);
   getView('reg');
+
 }else{
-  
 
   $login = trim($_POST['login']);
   $validName = preg_match("/^[a-zA-Z]{4,15}$/i",$login);
@@ -102,6 +107,7 @@ if(empty($_POST)){
      $_SESSION['id']=$myrow['user_id'];
      $_SESSION['email']=$myrow['user_email'];
      $_SESSION['tel']=$myrow['user_tel'];
+     $_SESSION['role'] = $myrow['role'];
   } 
   else {
       echo "Ошибка! Вы не зарегистрированы.";    

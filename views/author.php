@@ -7,7 +7,7 @@
 .error {color: #FF0000;}
 </style>
 <?php if(!empty($_SESSION['error'])): ?>
-    <h6 class="error" style="margin-left: 120px;">Не прошли авторизацию. Проверьте правильность заполнения полей</h3>
+    <h6 class="error" style="margin-left: 120px;">Не прошли авторизацию. Проверьте правильность заполнения полей</h6>
     <?php unset($_SESSION['error']); ?>
 <?php endif;?>
 <div class="container" style="padding-top: 40px; display: flex">    
@@ -35,8 +35,10 @@
             </form> 
         <?php else:?>    
             Вы вошли на сайт, как <?=$_SESSION['login'];?><br><br>
-            <?php if($_SESSION['login']!='admin'): ?> 
-                <a  href='<?= mylink('order'); ?>'>Продолжить бронирование</a><br><br>  
+            <?php if($_SESSION['role']!='admin'): ?> 
+                <a  href='<?= mylink('order'); ?>'>Продолжить бронирование</a><br><br> 
+                <?php elseif($_SESSION['role'] && $_SESSION['role'] === 'admin'): ?>
+                    <a  href='<?= mylink('admin'); ?>'>Панель администратора</a><br><br>
             <?php endif;?>
         <?php endif;?>
     </div>
