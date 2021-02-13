@@ -19,20 +19,21 @@
     <header>
         <nav class="navbar navbar-expand-md navbar-light bg-light">
             <div class="col-md-6 top-header-left">
-                <a class="navbar-brand" href="/">TESTSITE.COM</a>
+                <a class="navbar-brand" href="/">TESTSITE.COM</a>                
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
             </div>
             <div class="col-md-6 ">
                 <div class="collapse navbar-collapse " id="navbarText">                   
-                    <div class="d-flex justyfi-content-center align-items-center">
+                    <div class="d-flex justyfi-content-center align-items-center">                        
                         <div class="order col-md-8">
                             <?php if(empty($_SESSION['login'])): ?>
                                 <span class="order-number">Вы вошли на сайт, как гость</span>
                             <?php else:?>
                                 <span class="order-number">Вы вошли на сайт, как <?=$_SESSION['login'];?></span>
-                            <?php endif;?>
+                            <?php endif;?> 
+                            
                         </div>
                         <div class="col-md-6" style="text-align: center; cursor: pointer;">
                             <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Account <span class="caret"></span></a>
@@ -47,9 +48,11 @@
                             </ul>
                         </div>
                         <div class="col-md-4 navbar-text" style="text-align: end;">
-                            <a href="<?=mylink('cart');?>">
-                                <i class="fas fa-shopping-cart"></i>
-                            </a>
+                            <?php if($_SESSION['role'] && $_SESSION['role'] === 'admin'): ?>
+                                <a href='<?= mylink('admin'); ?>'><i class="fa fa-user" aria-hidden="true"></i><span><small>admin</small></span></a>
+                            <?php else: ?>
+                               <a href="<?=mylink('cart');?>"><i class="fas fa-shopping-cart"></i></a> 
+                            <?php endif;?>                            
                         </div>        
                     </div>
                 </div>

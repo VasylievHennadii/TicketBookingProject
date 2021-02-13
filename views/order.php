@@ -14,14 +14,19 @@
 ?>
 
 <section class="section-place">        
-    <div class="container">  
+    <div class="container"> 
+        <div>
+            <?php if($_SESSION[error_numberOfTickets]): ?>
+                <h3>Доступны для заказа максимум 5 билетов</h3>
+                <?php unset($_SESSION[error_numberOfTickets]); ?>
+            <?php endif; ?>
+        </div> 
         <div class="col-6" style="color: rgba(249, 78, 78); ">
         <?php if(!empty($_SESSION['zakaz_place'])):?>
             <h5>Выбраны места: 
             <?php foreach($_SESSION['zakaz_place'] as $value){
-                $v .= $value . ', ';
-                
-            } echo rtrim($v, ',');
+                $v .= $value . ', ';                
+                } echo rtrim($v, ',');
             ?>
             </h5>
         <?php endif;?>  
@@ -77,23 +82,5 @@
 </section>
 
 
-
-<!-- <form action="<?= mylink('order'); ?>" method="post">
-    <input type="checkbox" name="check_list[]" value="value 1">
-    <input type="checkbox" name="check_list[]" value="value 2">
-    <input type="checkbox" name="check_list[]" value="value 3">
-    <input type="checkbox" name="check_list[]" value="value 4">
-    <input type="checkbox" name="check_list[]" value="value 5">
-    <input type="submit" />
-</form> -->
-<?php
-// if(!empty($_POST['check_list'])) {
-//     foreach($_POST['check_list'] as $check) {
-//             echo $check; //echoes the value set in the HTML form for each checked checkbox.
-//                          //so, if I were to check 1, 3, and 5 it would echo value 1, value 3, value 5.
-//                          //in your case, it would echo whatever $row['Report ID'] is equivalent to.
-//     }
-// }
-?>
 
 <?php getFooter($data); ?>

@@ -24,8 +24,9 @@ function mylink($name, $id = ''){
 }
 
 
-function debug($arr){
-    echo '<pre>' . print_r($arr, true) . '</pre>';    
+function debug($arr, $die = false) {
+    echo '<pre>' . print_r($arr, true) . '</pre>';
+    if($die) die;
 }
 
 
@@ -77,6 +78,37 @@ function logout(){
     }
     header("Location: $redirect");
     exit;
+ }
+
+/**
+  * функция ограничивает количество выбранных билетов
+  * 
+  */
+ function numberOfTickets(){
+    if(!empty($_POST['check_list']) && empty($_SESSION['zakaz_place'])) { 
+    $place = $_POST['check_list'];
+        if(count($place) > 5){
+            $_SESSION[error_numberOfTickets] = 1;
+            redirect(mylink('order'));
+        }
+    $_SESSION['zakaz_place'] = $place;
+    
+    
+    }elseif(!empty($_POST['check_list']) && !empty($_SESSION['zakaz_place'])){
+        $place = $_SESSION['zakaz_place'];
+        foreach($_POST['check_list'] as $check) {
+            if(count($place) < 5){
+                array_push($place, $check); 
+                $place = array_unique($place, SORT_REGULAR);
+                sort($place);   
+                $_SESSION['zakaz_place'] = $place;            
+            }else{
+                $_SESSION[error_numberOfTickets] = 1;
+                redirect(mylink('order')); 
+            }    
+        } 
+    }
+    return $place;
  }
 
 // function sql_select($sql, $row = 'rows', $host = HOST, $user = USER, $password = PASSWORD, $database = DATABASE){

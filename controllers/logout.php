@@ -1,6 +1,6 @@
 <?php 
 logout();
-redirect();
+redirect(mylink('home'));
 
 
 

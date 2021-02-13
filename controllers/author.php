@@ -1,30 +1,20 @@
 <?php 
 
 
-
-if(!empty($_POST['check_list']) && empty($_SESSION['zakaz_place'])) { 
-    $z = $_POST['check_list'];
-    $_SESSION['zakaz_place'] = $z;
-    debug($z);
-    
-}elseif(!empty($_POST['check_list']) && !empty($_SESSION['zakaz_place'])){
-    $z = $_SESSION['zakaz_place'];
-    foreach($_POST['check_list'] as $check) {
-        array_push($z, $check);                    
-    }
-    debug($z);
-    $_SESSION['zakaz_place'] = $z;
-}
+$place = numberOfTickets();
+// debug($place, 1);
 
 if (!empty($_POST['login']) && !empty($_POST['email']) && !empty($_POST['password'])){
-	$data = $_POST;
-    author($data, $connect); 
-    // if($_SESSION['role'] && $_SESSION['role'] === 'admin'){        
-    //     getView('admin');
-    // }else{        
-    //     getView('author');
-    // }
-    getView('author');
+	$data = $_POST;    
+    author($data, $connect);
+    // redirect(mylink('order'));
+    if(author($data, $connect) && $_SESSION['role'] == 'admin'){
+        redirect(mylink('admin'));
+    }elseif(author($data, $connect)){
+        redirect(mylink('order'));
+    }else{
+        redirect(mylink('author'));
+    }
 }else{
     getView('author');
 }
