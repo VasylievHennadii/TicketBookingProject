@@ -5,6 +5,18 @@ if (!empty($_POST['exit'])){
 }
 
 $place = numberOfTickets();
-debug($place);
+// debug($place);
+// $place = $_SESSION['zakaz_place'];
+// debug($place);
+if($place){
+	$order = place_select($place, $connect);	
+}elseif (!$place && $_SESSION['zakaz_place']) {	
+	$place = $_SESSION['zakaz_place'];
+	$order = place_select($place, $connect);
+	// unset($_SESSION['zakaz_place']);	
+}
 
-getView('cart');
+$data = $order;
+// debug($order);
+
+getView('cart', $data);

@@ -8,7 +8,6 @@ while($ress[] = mysqli_fetch_assoc($check_zal)){
 $data['zal'] = $zal;
 
 
-
 if(!empty($_SESSION['login']) && !empty($_SESSION['id'])){
     $data['link'] = 'cart';
 }else{

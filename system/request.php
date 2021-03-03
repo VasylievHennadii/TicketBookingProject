@@ -88,12 +88,10 @@ function logout(){
     if(!empty($_POST['check_list']) && empty($_SESSION['zakaz_place'])) { 
     $place = $_POST['check_list'];
         if(count($place) > 5){
-            $_SESSION[error_numberOfTickets] = 1;
+            $_SESSION['error_numberOfTickets'] = 1;
             redirect(mylink('order'));
         }
-    $_SESSION['zakaz_place'] = $place;
-    
-    
+    $_SESSION['zakaz_place'] = $place;    
     }elseif(!empty($_POST['check_list']) && !empty($_SESSION['zakaz_place'])){
         $place = $_SESSION['zakaz_place'];
         foreach($_POST['check_list'] as $check) {
@@ -103,12 +101,26 @@ function logout(){
                 sort($place);   
                 $_SESSION['zakaz_place'] = $place;            
             }else{
-                $_SESSION[error_numberOfTickets] = 1;
+                $_SESSION['error_numberOfTickets'] = 1;
                 redirect(mylink('order')); 
             }    
         } 
     }
     return $place;
+ }
+
+/**
+ * функция извлечения данных из БД по выбранным местам в зале
+ * 
+ */
+ function place_select($place, $connect){
+    foreach ($place as $key => $value) {
+        $sql_z = "SELECT * FROM zal z LEFT JOIN category c ON (z.category_id=c.category_id) WHERE place_id = $value";
+        $check_zal = mysqli_query($connect, $sql_z);
+        $ress = mysqli_fetch_assoc($check_zal);  
+        $order[] = $ress;
+    }
+    return $order;
  }
 
 // function sql_select($sql, $row = 'rows', $host = HOST, $user = USER, $password = PASSWORD, $database = DATABASE){
