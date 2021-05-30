@@ -23,18 +23,17 @@ function mylink($name, $id = ''){
     }
 }
 
-
+/**
+ * метод дебагга для режима разработки
+ */
 function debug($arr, $die = false) {
     echo '<pre>' . print_r($arr, true) . '</pre>';
     if($die) die;
 }
 
-
-function validReg(){
-
-}
-
-
+/**
+ * метод авторизации пользователя
+ */
 function author($data, $connect){
 	$login = !empty(trim($data['login'])) ? trim($data['login']) : null;
     $user_password = !empty(trim($data['password'])) ? trim($data['password']) : null;
@@ -56,7 +55,9 @@ function author($data, $connect){
     return false;
 }
 
-
+/**
+ * метод обнуляет все сессии
+ */
 function logout(){
 	if(!empty($_SESSION)){
 		foreach ($_SESSION as $key =>$v) {
@@ -113,7 +114,7 @@ function logout(){
  * функция извлечения данных из БД по выбранным местам в зале
  * 
  */
- function place_select($place, $connect){
+ function getPlaceSelect($place, $connect){
     foreach ($place as $key => $value) {
         $sql_z = "SELECT * FROM zal z LEFT JOIN category c ON (z.category_id=c.category_id) WHERE place_id = $value";
         $check_zal = mysqli_query($connect, $sql_z);
@@ -122,6 +123,40 @@ function logout(){
     }
     return $order;
  }
+
+ /**
+  * вытягиваем заказы из БД по id юзера
+  */
+  function getOrderById($id, $connect){
+    $sql_c = "SELECT `order_id` FROM `orders` WHERE `user_id` = $id";
+    $check_order = mysqli_query($connect, $sql_c);       
+    while($rez = mysqli_fetch_assoc($check_order)){            
+        $order_id[$rez['order_id']] = $rez;           
+    }
+    $orders = array();
+    foreach($order_id as $item => $value){       
+        array_push($orders, $item);       
+    }
+    return $orders;
+  }
+
+  /**
+   * вытягиваем места для данного заказа данного юзера
+   */
+  function getPlaceByUser($id, $connect){
+    $sql_z = "SELECT place_id FROM order_place WHERE order_id = $id";
+    $check_zal = mysqli_query($connect, $sql_z);            
+    while($ress = mysqli_fetch_assoc($check_zal)){
+        $place_id[] = $ress;              
+    }   
+    $places = array();
+    foreach($place_id as $key => $value){ 
+        foreach($value as $items){
+            array_push($places, $items);
+        }
+    }  
+    return $places;
+  }
 
 // function sql_select($sql, $row = 'rows', $host = HOST, $user = USER, $password = PASSWORD, $database = DATABASE){
 //     $connect = mysqli_connect($host, $user, $password, $database);

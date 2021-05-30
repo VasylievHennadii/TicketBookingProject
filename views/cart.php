@@ -49,7 +49,7 @@ debug($order);
                                         <td><?=$order['sum'];?> <?=$order['currency'];?></td>
                                         <td><?=$order['date'];?></td>
                                         <td><?=$order['update_at'];?></td>
-                                        <td><a href="<?=ADMIN;?>/order/view?id=<?=$order['id'];?>"><i class="far fa-eye"></i></a> <a class="delete" href="<?=ADMIN;?>/order/delete?id=<?=$order['id'];?>"><i class="fas fa-times text-danger"></i></i></a></td>
+                                        <td><a href="<?//=ADMIN;?>/order/view?id=<?=$order['id'];?>"><i class="far fa-eye"></i></a> <a class="delete" href="<?//=ADMIN;?>/order/delete?id=<?=$order['id'];?>"><i class="fas fa-times text-danger"></i></i></a></td>
                                     </tr>
                                 <?php //endforeach; ?>
                                 </tbody>
@@ -105,7 +105,7 @@ debug($order);
             </tbody>
         </table>
     </div>
-<?php// else: ?>
+<?php // else: ?>
     <h3>Корзина пуста</h3>
 <?php //endif;?> -->
 
@@ -195,10 +195,8 @@ debug($order);
                     <input type="submit" name="exit" value="Сброс корзины" class="btn" style="background-color: red">
                 </form> 
 
-                <form action="/" method="get" style="margin-top: auto; margin-bottom: auto;">                
-                    <button class="btn" style="background-color: green; margin: 20px;">
-                    Оформить бронь
-                    </button>    
+                <form action="<?= mylink('cabinet'); ?>" method="post" style="margin-top: auto; margin-bottom: auto;">
+                    <input type="submit" name="booking" value="Оформить бронь" class="btn" style="background-color: green; margin: 20px;">  
                 </form> 
             <?php endif;?>
             </div>

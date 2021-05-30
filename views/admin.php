@@ -1,4 +1,6 @@
-<?php getHeader($data);?>
+<?php getHeader($data);
+    $orders = $data;
+?>
 
 
 <div class="container" style="padding: 50; min-height: 400px;">
@@ -9,11 +11,11 @@
             <h1>
                 Список заказов
             </h1>
-            <ol class="breadcrumb" style="margin-bottom: unset;">
+            <!-- <ol class="breadcrumb" style="margin-bottom: unset;">
                 <li style="padding-right: 10px;  padding-top: 5px;"><a href="/" style="color: #444;
             text-decoration: none;"><i class="fas fa-tachometer-alt"></i> Главная</a></li>
-                <!-- <li class="active">Список заказов</li> -->
-            </ol>
+                <li class="active">Список заказов</li>
+            </ol> -->
         </section>
 
         <!-- Main content -->
@@ -36,23 +38,23 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                    <?php //foreach($orders as $order): ?>
+                                    <?php foreach($orders as $order): ?>
                                         <?php $class = $order['status'] ? 'success' : ''; ?>
                                         <tr class="<?=$class;?>">
-                                            <td><?=$order['id'];?></td>
-                                            <td><?=$order['name'];?></td>
+                                            <td><?=$order['order_id'];?></td>
+                                            <td><?=$order['user_name'];?></td>
                                             <td><?=$order['status'] ? 'Завершен' : 'Новый';?></td>
                                             <td><?=$order['sum'];?> <?=$order['currency'];?></td>
                                             <td><?=$order['date'];?></td>
                                             <td><?=$order['update_at'];?></td>
-                                            <td><a href="<?=ADMIN;?>/order/view?id=<?=$order['id'];?>"><i class="far fa-eye"></i></a> <a class="delete" href="<?=ADMIN;?>/order/delete?id=<?=$order['id'];?>"><i class="fas fa-times text-danger"></i></i></a></td>
+                                            <td><a href="<?//=ADMIN;?>/order/view?id=<?=$order['id'];?>"><i class="far fa-eye"></i></a> <a class="delete" href="<?//=ADMIN;?>/order/delete?id=<?=$order['id'];?>"><i class="fas fa-times text-danger"></i></i></a></td>
                                         </tr>
-                                    <?php //endforeach; ?>
+                                    <?php endforeach; ?>
                                     </tbody>
                                 </table>
                             </div>
                             <div class="text-center">
-                                <p>(<?=count($orders);?> заказа(ов) из <?=$count;?>)</p>
+                                <p>(<?=count($orders);?> заказа(ов) из <?=count($orders);?>)</p>
                                 <?php if($pagination->countPages > 1): ?>
                                     <?=$pagination;?>
                                 <?php endif; ?>

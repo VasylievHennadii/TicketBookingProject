@@ -38,8 +38,11 @@
                         <div class="col-md-6" style="text-align: center; cursor: pointer;">
                             <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Account <span class="caret"></span></a>
                             <ul class="dropdown-menu">
-                                <?php if(!empty($_SESSION['login'])): ?>
+                                <?php if(!empty($_SESSION['login'] )): ?>
                                     <li><span class="dropdown-item"> Добро пожаловать, <?=$_SESSION['login'];?></span></li>
+                                    <?php if($_SESSION['role'] === 'user'): ?>
+                                        <li><a class="dropdown-item" href="<?=mylink('cabinet');?>">Кабинет</a></li>
+                                    <?php endif;?>
                                     <li><a class="dropdown-item" href="<?=mylink('logout');?>">Выход</a></li>
                                 <?php else:?>   
                                     <li><a class="dropdown-item" href="<?=mylink('author');?>">Вход</a></li>
