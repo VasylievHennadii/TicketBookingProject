@@ -128,7 +128,7 @@ function logout(){
   * вытягиваем заказы из БД по id юзера
   */
   function getOrderById($id, $connect){
-    $sql_c = "SELECT `order_id` FROM `orders` WHERE `user_id` = $id";
+    $sql_c = "SELECT `order_id` FROM `orders` WHERE `user_id` = $id ORDER BY `order_id` DESC";
     $check_order = mysqli_query($connect, $sql_c);       
     while($rez = mysqli_fetch_assoc($check_order)){            
         $order_id[$rez['order_id']] = $rez;           

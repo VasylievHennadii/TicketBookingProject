@@ -30,10 +30,10 @@
                                         <tr>
                                             <th>ID</th>
                                             <th>Покупатель</th>
-                                            <th>Статус</th>
-                                            <th>Сумма</th>
+                                            <th>Телефон</th>
+                                            <th>Email</th>
                                             <th>Дата создания</th>
-                                            <th>Дата изменения</th>
+                                            <th>Сумма</th>
                                             <th>Действия</th>
                                         </tr>
                                     </thead>
@@ -43,11 +43,15 @@
                                         <tr class="<?=$class;?>">
                                             <td><?=$order['order_id'];?></td>
                                             <td><?=$order['user_name'];?></td>
-                                            <td><?=$order['status'] ? 'Завершен' : 'Новый';?></td>
-                                            <td><?=$order['sum'];?> <?=$order['currency'];?></td>
-                                            <td><?=$order['date'];?></td>
+                                            <!-- <td><?=$order['status'] ? 'Завершен' : 'Новый';?></td> -->
+                                            <td><?=$order['user_tel'];?></td>
+                                            <td><?=$order['user_email'];?></td>
+                                            <td><?=$order['data_create'];?></td>
                                             <td><?=$order['update_at'];?></td>
-                                            <td><a href="<?//=ADMIN;?>/order/view?id=<?=$order['id'];?>"><i class="far fa-eye"></i></a> <a class="delete" href="<?//=ADMIN;?>/order/delete?id=<?=$order['id'];?>"><i class="fas fa-times text-danger"></i></i></a></td>
+
+                                            <!-- <td><a href="<?//=ADMIN;?>/order/view?id=<?=$order['id'];?>"><i class="far fa-eye"></i></a> <a class="delete" href="<?//=ADMIN;?>/order/delete?id=<?=$order['id'];?>"><i class="fas fa-times text-danger"></i></i></a></td> -->
+                                            
+                                            <td><a href="<?//=ADMIN;?>/order/view?id=<?=$order['id'];?>"></a> <a class="delete" href="<?//=ADMIN;?>/order/delete?id=<?=$order['id'];?>"><i class="fas fa-times text-danger"></i></i></a></td>
                                         </tr>
                                     <?php endforeach; ?>
                                     </tbody>
