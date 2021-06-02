@@ -18,7 +18,7 @@ if(empty($_POST['login']) && empty($_POST['email']) && empty($_POST['tel']) && e
   $login = trim($_POST['login']);
   $validName = preg_match("/^[a-zA-Z]{4,15}$/i",$login);
   $email = trim($_POST['email']);
-  $validEmail = preg_match('/^[\w-\.]+@[\w-]+\.[a-z]{2,4}$/i', $email);
+  $validEmail = preg_match('/^[\w\-\.]+@[\w\-]+\.[a-z]{2,4}$/i', $email);
   $tel = $_POST['tel'];
   $validTel = strlen($tel);
   $password = trim($_POST['password']);
