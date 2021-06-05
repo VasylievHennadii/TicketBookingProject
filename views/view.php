@@ -1,10 +1,9 @@
-<?php getHeader($data);?>
-<?php 
-$order = $data;
+<?php getHeader($data);
+    $order = $data['place'];
+    $date_create = $data['data_create'];
 
+   
 ?>
-
-
 
 <!--prdt-starts-->
 <div class="prdt" >
@@ -13,7 +12,7 @@ $order = $data;
             <div class="col-md-12">
                 <div class="product-one cart">
                     <div class="register-top heading">
-                        <h2>Оформление заказа</h2>
+                        <h2>Заказ № <?= $_GET['view_id']?> от <?=$date_create?></h2>
                     </div>
                     <br><br>
                     <?php if(!empty($order)):?>
@@ -52,31 +51,21 @@ $order = $data;
                             </table>
                         </div>                      
                     <?php else: ?>
-                        <h3>Корзина пуста...</h3>
+                        <h3>Такого заказа не существует...</h3>
                     <?php endif;?>
                 </div>
             </div>
 
             <div style="display: flex; justify-content: space-between;">
                 <form action="" method="get" style="margin-top: auto; margin-bottom: auto;">                
-                    <button name="route" value="order" class="btn" style="background-color: aquamarine; margin: 20px;">
-                    Продолжить покупки
+                    <button name="route" value="admin" class="btn" style="background-color: aquamarine; margin: 20px;">
+                    Вернуться к списку заказов
                     </button>    
                 </form>
-            <?php if(!empty($order)) :?>
-                <form action="<?= mylink('cart'); ?>" method="post" style="margin-top: auto; margin-bottom: auto;">
-                    <input type="submit" name="exit" value="Сброс корзины" class="btn" style="background-color: red">
-                </form> 
-
-                <form action="<?= mylink('cabinet'); ?>" method="post" style="margin-top: auto; margin-bottom: auto;">
-                    <input type="submit" name="booking" value="Оформить бронь" class="btn" style="background-color: green; margin: 20px;">  
-                </form> 
-            <?php endif;?>
             </div>
         </div>
     </div>
 </div>
 <!--product-end-->
 
-
-<?php getFooter($data);?>
+<?php getFooter();?>

@@ -3,8 +3,7 @@
 $order_id = $data['order_id'];
 $booking_order = $data['booking'];
 $order = $data;
-//debug($_SESSION['id']);
-// debug($order);
+
 ?>
 
 
@@ -68,7 +67,7 @@ $order = $data;
         <!-- all order -->
                 <div class="product-one cart" style="padding-bottom: 100px;">
                     <div class="register-top heading">
-                        <h2>Номер заказа: № <?=$key?> от ДАТА</h2>
+                        <h2>Номер заказа: № <?=$key?> </h2>
                     </div>
                     
                     <?php if($_SESSION['role'] === 'user' && !empty($order)):?>

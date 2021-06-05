@@ -20,4 +20,3 @@ if($_SERVER['REQUEST_URI'] == '/'){
 
 ?>
 
-<!-- site.in.ua/index.php?route=category -->

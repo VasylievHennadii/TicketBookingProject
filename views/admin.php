@@ -1,5 +1,6 @@
 <?php getHeader($data);
     $orders = $data;
+   
 ?>
 
 
@@ -8,14 +9,7 @@
 
         <!-- Content Header (Page header) -->
         <section class="content-header" style="display: flex; justify-content: space-between; background-color: #e9ecef; padding: 0 10;">
-            <h1>
-                Список заказов
-            </h1>
-            <!-- <ol class="breadcrumb" style="margin-bottom: unset;">
-                <li style="padding-right: 10px;  padding-top: 5px;"><a href="/" style="color: #444;
-            text-decoration: none;"><i class="fas fa-tachometer-alt"></i> Главная</a></li>
-                <li class="active">Список заказов</li>
-            </ol> -->
+            <h1>Список заказов</h1>
         </section>
 
         <!-- Main content -->
@@ -33,7 +27,7 @@
                                             <th>Телефон</th>
                                             <th>Email</th>
                                             <th>Дата создания</th>
-                                            <th>Сумма</th>
+                                            <!-- <th>Сумма</th> -->
                                             <th>Действия</th>
                                         </tr>
                                     </thead>
@@ -43,15 +37,22 @@
                                         <tr class="<?=$class;?>">
                                             <td><?=$order['order_id'];?></td>
                                             <td><?=$order['user_name'];?></td>
-                                            <!-- <td><?=$order['status'] ? 'Завершен' : 'Новый';?></td> -->
                                             <td><?=$order['user_tel'];?></td>
                                             <td><?=$order['user_email'];?></td>
                                             <td><?=$order['data_create'];?></td>
-                                            <td><?=$order['update_at'];?></td>
-
-                                            <!-- <td><a href="<?//=ADMIN;?>/order/view?id=<?=$order['id'];?>"><i class="far fa-eye"></i></a> <a class="delete" href="<?//=ADMIN;?>/order/delete?id=<?=$order['id'];?>"><i class="fas fa-times text-danger"></i></i></a></td> -->
-                                            
-                                            <td><a href="<?//=ADMIN;?>/order/view?id=<?=$order['id'];?>"></a> <a class="delete" href="<?//=ADMIN;?>/order/delete?id=<?=$order['id'];?>"><i class="fas fa-times text-danger"></i></i></a></td>
+                                            <!-- <td><?=$order['update_at'];?></td> -->
+                                            <td style="display: flex;">
+                                                <form action="<?= mylink('view', $order['order_id']);?>" method="post" style="margin: 0;">
+                                                    <button class="btn" name="order_view" id="<?=$order['order_id'];?>" value="<?=$order['data_create'];?>">
+                                                        <a href="<?= mylink('view');?>"><i class="far fa-eye"></i></a>
+                                                    </button>
+                                                </form>
+                                                <form action="<?= mylink('delete', $order['order_id']);?>" method="post" style="margin: 0;">
+                                                    <button class="btn" name="order_delete" id="<?=$order['order_id'];?>" value="<?=$order['data_create'];?>">
+                                                        <a href="<?= mylink('delete');?>"><i class="fas fa-times text-danger"></i></a>
+                                                    </button>
+                                                </form>
+                                            </td>
                                         </tr>
                                     <?php endforeach; ?>
                                     </tbody>
@@ -69,13 +70,6 @@
             </div>
         </section>
         <!-- /.content -->
-
-        <!-- <form action="<?= mylink('cart'); ?>" method="get">                
-            <button name="route" value="order" class="btn" style="margin-top: 10px; background-color: aquamarine;">
-            Продолжить добавление к заказу
-            </button>    
-        </form> -->
-
     </div>
 </div>
 

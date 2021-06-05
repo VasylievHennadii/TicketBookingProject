@@ -10,11 +10,9 @@ if($place){
 	$order = getPlaceSelect($place, $connect);	
 }elseif (!$place && $_SESSION['zakaz_place']) {	
 	$place = $_SESSION['zakaz_place'];
-	$order = getPlaceSelect($place, $connect);
-	// unset($_SESSION['zakaz_place']);	
+	$order = getPlaceSelect($place, $connect);		
 }
 
 $data = $order;
-// debug($order);
 
 getView('cart', $data);

@@ -158,19 +158,7 @@ function logout(){
     return $places;
   }
 
-// function sql_select($sql, $row = 'rows', $host = HOST, $user = USER, $password = PASSWORD, $database = DATABASE){
-//     $connect = mysqli_connect($host, $user, $password, $database);
-//     mysqli_query($connect, "SET CHARSET UTF8");
-//     $query = mysqli_query($connect, $sql);
-//     if($row == 'rows'){
-//         while($res[] = mysqli_fetch_assoc($query)){
-//             $value = $res;
-//         }
-//     }elseif($row == 'row'){
-//         $value = mysqli_fetch_assoc($query);
-//     }
-//     return $value;
-// }
+
 
 
 

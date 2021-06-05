@@ -65,10 +65,4 @@ if($_SESSION['role'] === 'user'){
     getView('author');
 }
 
-
-
-
-
-
-
 ?>

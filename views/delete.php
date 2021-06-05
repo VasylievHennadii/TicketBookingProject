@@ -1,10 +1,11 @@
-<?php getHeader($data);?>
-<?php 
-$order = $data;
+<?php getHeader($data);
+if(!empty($data) ){
+    $order = $data['place'];
+    $date_create = $data['data_create'];
+}    
 
+   
 ?>
-
-
 
 <!--prdt-starts-->
 <div class="prdt" >
@@ -12,11 +13,11 @@ $order = $data;
         <div class="prdt-top">
             <div class="col-md-12">
                 <div class="product-one cart">
+                <?php if(!empty($order) ):?>
                     <div class="register-top heading">
-                        <h2>Оформление заказа</h2>
+                        <h2 style="color: red;">Вы действительно хотите удалить заказ № <?= $_GET['delete_id']?> от <?=$date_create?></h2>
                     </div>
                     <br><br>
-                    <?php if(!empty($order)):?>
                         <div class="table-responsive">
                             <table class="table table-hover table-striped">
                                 <thead>
@@ -50,33 +51,33 @@ $order = $data;
                                 </tr>
                                 </tbody>
                             </table>
-                        </div>                      
+                        </div> 
+                    <?php elseif(!empty($_SESSION['deleted_order'])):?> 
+                        <h3><?=$_SESSION['deleted_order'];?></h3>
+                        <?php unset($_SESSION['deleted_order']);?>
                     <?php else: ?>
-                        <h3>Корзина пуста...</h3>
+                        <h3>Такого заказа не существует...</h3>
                     <?php endif;?>
                 </div>
             </div>
 
             <div style="display: flex; justify-content: space-between;">
                 <form action="" method="get" style="margin-top: auto; margin-bottom: auto;">                
-                    <button name="route" value="order" class="btn" style="background-color: aquamarine; margin: 20px;">
-                    Продолжить покупки
+                    <button name="route" value="admin" class="btn" style="background-color: aquamarine; margin: 20px;">
+                    Вернуться к списку заказов
                     </button>    
                 </form>
-            <?php if(!empty($order)) :?>
-                <form action="<?= mylink('cart'); ?>" method="post" style="margin-top: auto; margin-bottom: auto;">
-                    <input type="submit" name="exit" value="Сброс корзины" class="btn" style="background-color: red">
-                </form> 
 
-                <form action="<?= mylink('cabinet'); ?>" method="post" style="margin-top: auto; margin-bottom: auto;">
-                    <input type="submit" name="booking" value="Оформить бронь" class="btn" style="background-color: green; margin: 20px;">  
-                </form> 
+            <?php if(!empty($order)) :?>
+                <form action="<?= mylink('delete', $_GET['delete_id']); ?>" method="post" style="margin-top: auto; margin-bottom: auto;">
+                    <input type="submit" name="deleted_order" value="Удалить заказ" class="btn" id="<?=$order['order_id'];?>" style="background-color: red">
+                </form>                
             <?php endif;?>
+            
             </div>
         </div>
     </div>
 </div>
 <!--product-end-->
 
-
-<?php getFooter($data);?>
+<?php getFooter();?>
