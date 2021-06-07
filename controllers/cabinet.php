@@ -43,21 +43,28 @@ if($_SESSION['role'] === 'user'){
         //Реализован вывод всех предыдущих заказов юзера в его кабинете
 
         $user_id = $_SESSION['id'];
+        
     
         //вытягиваем заказы из БД по id юзера
         $order_id = getOrderById($user_id,$connect);
-    
-        //вытягиваем места для каждого заказа данного юзера
-        foreach($order_id as $key => $value){ 
-            $place_id[$value] = getPlaceByUser($value, $connect);            
+        
+        if(empty($order_id)){
+            getView('cabinet');
+        }else{
+            //вытягиваем места для каждого заказа данного юзера
+            foreach($order_id as $key => $value){ 
+                $place_id[$value] = getPlaceByUser($value, $connect);            
+            }
+        
+            //извлечения данных из БД по выбранным местам в зале
+            foreach($place_id as $key => $value){           
+                $order[$key] = getPlaceSelect($value, $connect);
+            }  
+
+            $data = $order;
         }
     
-        //извлечения данных из БД по выбранным местам в зале
-        foreach($place_id as $key => $value){           
-            $order[$key] = getPlaceSelect($value, $connect);
-        }  
-
-        $data = $order;
+        
     }
     
     getView('cabinet', $data);

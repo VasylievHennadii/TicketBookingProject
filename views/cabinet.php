@@ -1,8 +1,10 @@
 <?php getHeader($data);?>
 <?php 
-$order_id = $data['order_id'];
-$booking_order = $data['booking'];
-$order = $data;
+if(!empty($data)){
+    $order_id = $data['order_id'];
+    $booking_order = $data['booking'];
+    $order = $data;    
+}
 
 ?>
 
@@ -12,6 +14,7 @@ $order = $data;
     <div class="container" style="padding: 50; min-height: 400px; margin-top: 40px;">
         <div class="prdt-top">
             <div class="col-md-12">
+            <h3>Кабинет пользователя <strong><b><?= $_SESSION['login']?></b></strong></h3>
                 <?php if(!empty($_SESSION['excellent'])): ?>
         <!-- booking_order -->
                 <div class="product-one cart" style="padding-bottom: 100px;">
@@ -55,14 +58,15 @@ $order = $data;
                         </div>                      
                     <?php else: ?>
                         <h3>Забронированных заказов пока нет...</h3>
-                    <?php endif;?>
+                    
                 </div>
+                <?php endif;?>
         <!-- booking_order -->
                 <?php 
                 unset($_SESSION['excellent']); 
                 unset($_SESSION['zakaz_place']);
                 ?>
-                <?php elseif(empty($_SESSION['excellent'])): ?>
+                <?php elseif(empty($_SESSION['excellent']) && !empty($order)): ?>
                 <?php foreach($order as $key => $value):?>
         <!-- all order -->
                 <div class="product-one cart" style="padding-bottom: 100px;">
@@ -70,7 +74,7 @@ $order = $data;
                         <h2>Номер заказа: № <?=$key?> </h2>
                     </div>
                     
-                    <?php if($_SESSION['role'] === 'user' && !empty($order)):?>
+                    <?php if($_SESSION['role'] === 'user' ):?>
                         <div class="table-responsive">
                             <table class="table table-hover table-striped">
                                 <thead>

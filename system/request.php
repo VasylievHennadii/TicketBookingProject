@@ -133,11 +133,15 @@ function logout(){
     while($rez = mysqli_fetch_assoc($check_order)){            
         $order_id[$rez['order_id']] = $rez;           
     }
-    $orders = array();
-    foreach($order_id as $item => $value){       
-        array_push($orders, $item);       
-    }
-    return $orders;
+    
+    if(!empty($order_id)){
+        $orders = array();        
+        foreach($order_id as $item => $value){       
+            array_push($orders, $item);       
+        }
+        return $orders;
+    }    
+    if(empty($orders)) return false;    
   }
 
   /**
